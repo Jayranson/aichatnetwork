@@ -1,0 +1,430 @@
+/* 
+ * AI Chat Network - Home Page Styles
+ * Specific styles for the home page
+ */
+
+/* Container */
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hero section */
+.hero {
+    padding: 100px 0 80px;
+    background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    background: linear-gradient(90deg, var(--text-primary), var(--accent-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-image {
+    position: relative;
+}
+
+/* Chat preview in hero */
+.chat-preview {
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    margin-left: auto;
+}
+
+.chat-preview-header {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    padding: 15px 20px;
+}
+
+.preview-room-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.preview-room-topic {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.chat-preview-messages {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.preview-message {
+    display: flex;
+    gap: 12px;
+}
+
+.preview-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.preview-message.ai .preview-avatar {
+    background: linear-gradient(135deg, var(--accent-green), #10b981);
+}
+
+.preview-content {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 12px 15px;
+    border-radius: 8px;
+    flex-grow: 1;
+}
+
+.preview-author {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.preview-message.ai .preview-author {
+    color: var(--accent-green);
+}
+
+/* Stats section */
+.stats {
+    background-color: var(--bg-secondary);
+    padding: 60px 0;
+    position: relative;
+}
+
+.stats:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Features section */
+.features {
+    padding: 80px 0;
+    background-color: var(--bg-primary);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(90deg, var(--text-primary), var(--accent-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+}
+
+/* Popular rooms section */
+.popular-rooms {
+    padding: 80px 0;
+    background-color: var(--bg-secondary);
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.rooms-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* About section */
+.about {
+    padding: 80px 0;
+    background-color: var(--bg-primary);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+/* CTA section */
+.cta {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+    text-align: center;
+}
+
+.cta-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--text-primary), var(--accent-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--bg-secondary);
+    padding: 60px 0 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+}
+
+.footer-column h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-primary);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-column a {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.footer-column a:hover {
+    color: var(--text-primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero-content {
+        max-width: none;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .chat-preview {
+        margin: 0 auto;
+    }
+    
+    .stats-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .features-grid,
+    .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* #CommentComplete */

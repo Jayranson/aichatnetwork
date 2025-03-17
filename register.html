@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - AI Chat Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-showcase">
+                <div class="auth-logo">
+                    <div class="logo-icon">AI</div>
+                    <div class="logo-text">Chat Network</div>
+                </div>
+                <div class="showcase-content">
+                    <h2>Join the intelligent conversation</h2>
+                    <p>Create an account to access AI-powered chat rooms, connect with others, and experience next-generation communication.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span>
+                            <span>AI-enhanced chat rooms</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">👥</span>
+                            <span>Connect with like-minded people</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🌟</span>
+                            <span>Create your own communities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="auth-right">
+            <div class="auth-panel">
+                <div class="auth-header">
+                    <h1>Create Account</h1>
+                    <p>Join AI Chat Network in just a few steps</p>
+                </div>
+                <div class="auth-alerts" id="auth-alerts">
+                    <!-- Alerts will be inserted here -->
+                </div>
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" required autocomplete="username">
+                        <small class="form-hint">Choose a unique username that will be visible to others</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="password" name="password" class="form-control" required autocomplete="new-password">
+                            <button type="button" class="password-toggle" id="password-toggle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-slash-icon hidden">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <small class="form-hint">Password must be at least 8 characters long</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="confirm-password" name="confirm-password" class="form-control" required autocomplete="new-password">
+                            <button type="button" class="password-toggle" id="confirm-password-toggle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-slash-icon hidden">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options terms-acceptance">
+                        <input type="checkbox" id="terms-accept" name="terms-accept" required>
+                        <label for="terms-accept">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    <div class="auth-divider">
+                        <span>Already have an account?</span>
+                    </div>
+                    <a href="/login" class="btn btn-outline btn-block">Sign In</a>
+                </form>
+            </div>
+            <div class="auth-footer">
+                <p>&copy; 2025 AI Chat Network. <a href="#">Privacy Policy</a> & <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <div class="modal-icon success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h2>Registration Successful!</h2>
+            <p>Your account has been created. You'll be redirected to login page in a few seconds.</p>
+            <button class="btn btn-primary" id="go-to-login-btn">Go to Login</button>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
+
+<!-- #CommentComplete -->

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - AI Chat Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">AI</div>
+                    <div class="logo-text">Chat Network</div>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <li><a href="/chat" class="nav-link">Chat Rooms</a></li>
+                        <li><a href="/profile" class="nav-link active">Profile</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="user-menu" id="user-menu">
+                    <div class="user-menu-trigger" id="user-menu-trigger">
+                        <div class="user-avatar" id="header-user-avatar">JD</div>
+                        <span class="user-name" id="header-user-name">John Doe</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="/profile" class="dropdown-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span>My Profile</span>
+                        </a>
+                        <a href="/chat" class="dropdown-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span>My Chats</span>
+                        </a>
+                        <a href="#" class="dropdown-item" id="logout-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="profile-content">
+            <div class="content-container">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profile-avatar">JD</div>
+                    <div class="profile-info">
+                        <h1 class="profile-name" id="profile-name">
+                            <span id="username-display">John Doe</span>
+                            <!-- Role badge will be added here dynamically -->
+                            <span id="role-badge" class="role-badge"></span>
+                        </h1>
+                        <p class="profile-status" id="profile-status">Member since <span id="join-date">March 2025</span></p>
+                    </div>
+                    <div class="profile-actions" id="profile-actions">
+                        <!-- Actions for viewing other users' profiles (whisper, block, etc.) -->
+                        <!-- Added dynamically when viewing other profiles -->
+                    </div>
+                </div>
+                
+                <!-- Profile Tabs -->
+                <div class="profile-tabs" id="profile-tabs">
+                    <button class="tab-button active" data-tab="profile">Profile Information</button>
+                    <button class="tab-button" data-tab="activity">Recent Activity</button>
+                    <button class="tab-button" data-tab="settings">Account Settings</button>
+                    <!-- Admin tab - visible only to admins on their own profile -->
+                    <button class="tab-button admin-only" data-tab="admin" id="admin-tab" style="display: none;">Admin Controls</button>
+                </div>
+                
+                <!-- Profile Tab Content -->
+                <div class="tab-content" id="profile-tab">
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>About Me</h2>
+                            <button class="edit-button self-only" id="edit-bio-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Edit
+                            </button>
+                        </div>
+                        <div class="profile-bio" id="profile-bio">
+                            <p>No bio information available. Click edit to add your bio.</p>
+                        </div>
+                        <div class="edit-bio-form hidden" id="edit-bio-form">
+                            <textarea id="bio-textarea" placeholder="Write something about yourself..."></textarea>
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" id="cancel-bio-btn">Cancel</button>
+                                <button class="btn btn-primary" id="save-bio-btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Profile Information</h2>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="profile-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="messages-count">0</div>
+                                    <div class="stat-label">Messages Sent</div>
+                                </div>
+                            </div>
+                            <div class="profile-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="rooms-joined">0</div>
+                                    <div class="stat-label">Rooms Joined</div>
+                                </div>
+                            </div>
+                            <div class="profile-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="ai-interactions">0</div>
+                                    <div class="stat-label">AI Interactions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI-specific information section (only shown for AI profiles) -->
+                    <div class="profile-card ai-only" id="ai-info-card" style="display: none;">
+                        <div class="profile-card-header">
+                            <h2>AI Assistant Information</h2>
+                        </div>
+                        <div class="ai-info">
+                            <div class="ai-info-item">
+                                <strong>Type:</strong>
+                                <span id="ai-type">Conversational AI</span>
+                            </div>
+                            <div class="ai-info-item">
+                                <strong>Capabilities:</strong>
+                                <ul id="ai-capabilities">
+                                    <li>Natural language conversation</li>
+                                    <li>Topic-specific information</li>
+                                    <li>Real-time assistance</li>
+                                </ul>
+                            </div>
+                            <div class="ai-info-item">
+                                <strong>Knowledge Base:</strong>
+                                <span id="ai-knowledge">General knowledge trained up to October 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>My Rooms</h2>
+                        </div>
+                        <div class="profile-rooms" id="profile-rooms">
+                            <p class="empty-state">You haven't joined any rooms yet. <a href="/chat">Browse chat rooms</a> to get started.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Tab Content -->
+                <div class="tab-content hidden" id="activity-tab">
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+                        <div class="activity-timeline" id="activity-timeline">
+                            <p class="empty-state">No recent activity to show.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Tab Content - Only visible to users on their own profile -->
+                <div class="tab-content hidden self-only" id="settings-tab">
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Account Information</h2>
+                        </div>
+                        <form id="account-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="settings-username">Username</label>
+                                <input type="text" id="settings-username" class="form-control" disabled>
+                                <small class="form-hint">Username cannot be changed</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="settings-email">Email Address</label>
+                                <input type="email" id="settings-email" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Avatar & Appearance</h2>
+                        </div>
+                        <div class="avatar-settings">
+                            <div class="current-avatar" id="settings-avatar">JD</div>
+                            <div class="avatar-controls">
+                                <div class="avatar-colors" id="avatar-colors">
+                                    <div class="color-option" style="background: hsl(0, 70%, 50%);" data-color="hsl(0, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(30, 70%, 50%);" data-color="hsl(30, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(60, 70%, 50%);" data-color="hsl(60, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(120, 70%, 50%);" data-color="hsl(120, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(180, 70%, 50%);" data-color="hsl(180, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(240, 70%, 50%);" data-color="hsl(240, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(270, 70%, 50%);" data-color="hsl(270, 70%, 50%)"></div>
+                                    <div class="color-option" style="background: hsl(300, 70%, 50%);" data-color="hsl(300, 70%, 50%)"></div>
+                                </div>
+                                <button class="btn btn-primary" id="save-avatar-btn">Save Avatar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Password</h2>
+                        </div>
+                        <form id="password-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" class="form-control" required>
+                                <small class="form-hint">Password must be at least 8 characters long</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-card danger-zone">
+                        <div class="profile-card-header">
+                            <h2>Danger Zone</h2>
+                        </div>
+                        <div class="danger-actions">
+                            <div class="danger-item">
+                                <div class="danger-info">
+                                    <h3>Delete Account</h3>
+                                    <p>Permanently delete your account and all associated data. This action cannot be undone.</p>
+                                </div>
+                                <button class="btn btn-danger" id="delete-account-btn">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Admin Controls Tab - Only visible to admins on their own profile -->
+                <div class="tab-content hidden admin-only" id="admin-tab">
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Server Statistics</h2>
+                        </div>
+                        <div class="admin-stats">
+                            <div class="admin-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="total-users">0</div>
+                                    <div class="stat-label">Total Users</div>
+                                </div>
+                            </div>
+                            <div class="admin-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="total-rooms">0</div>
+                                    <div class="stat-label">Active Rooms</div>
+                                </div>
+                            </div>
+                            <div class="admin-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="online-users">0</div>
+                                    <div class="stat-label">Online Users</div>
+                                </div>
+                            </div>
+                            <div class="admin-stat">
+                                <div class="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="server-uptime">0d 0h</div>
+                                    <div class="stat-label">Server Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>User Management</h2>
+                        </div>
+                        <div class="admin-search">
+                            <div class="form-group">
+                                <label for="user-search">Search Users</label>
+                                <div class="search-container">
+                                    <input type="text" id="user-search" class="form-control" placeholder="Search by username or email">
+                                    <button class="btn btn-primary" id="search-user-btn">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-user-list" id="admin-user-list">
+                            <div class="empty-state">Search for users to manage them</div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Room Management</h2>
+                        </div>
+                        <div class="admin-search">
+                            <div class="form-group">
+                                <label for="room-search">Search Rooms</label>
+                                <div class="search-container">
+                                    <input type="text" id="room-search" class="form-control" placeholder="Search by room name or topic">
+                                    <button class="btn btn-primary" id="search-room-btn">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-room-list" id="admin-room-list">
+                            <div class="empty-state">Search for rooms to manage them</div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>System Settings</h2>
+                        </div>
+                        <form id="system-settings-form" class="settings-form">
+                            <div class="form-group">
+                                <label>Maintenance Mode</label>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="maintenance-mode">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Enable maintenance mode</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Registration</label>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="allow-registration" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Allow new user registration</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Room Creation</label>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="allow-room-creation" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Allow users to create rooms</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="max-users-per-room">Maximum Users Per Room</label>
+                                <input type="number" id="max-users-per-room" class="form-control" value="100" min="5" max="500">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save System Settings</button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h2>Moderation</h2>
+                        </div>
+                        <div class="admin-moderation">
+                            <div class="moderation-section">
+                                <h3>Banned Users</h3>
+                                <div class="banned-users-list" id="banned-users-list">
+                                    <div class="empty-state">No banned users</div>
+                                </div>
+                            </div>
+                            <div class="moderation-section">
+                                <h3>Reports</h3>
+                                <div class="reports-list" id="reports-list">
+                                    <div class="empty-state">No pending reports</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="view-mod-logs-btn">View Moderation Logs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Delete Account Confirmation Modal -->
+    <div class="modal" id="delete-account-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Delete Account</h2>
+                <button class="close-modal" id="close-delete-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <p>Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently removed.</p>
+                <div class="confirm-delete">
+                    <label for="confirm-delete-input">Type "DELETE" to confirm:</label>
+                    <input type="text" id="confirm-delete-input" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-delete-btn">Cancel</button>
+                <button class="btn btn-danger" id="confirm-delete-btn" disabled>Delete Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Actions Modal -->
+    <div class="modal" id="admin-actions-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Admin Actions</h2>
+                <button class="close-modal" id="close-admin-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="admin-target-info" class="admin-target-info">
+                    <!-- Target user/room info will be displayed here -->
+                </div>
+                <div class="admin-actions-list">
+                    <button class="btn btn-warning action-btn" id="admin-ban-btn">Ban User</button>
+                    <button class="btn btn-warning action-btn" id="admin-suspend-btn">Suspend User</button>
+                    <button class="btn btn-primary action-btn" id="admin-promote-btn">Grant Admin</button>
+                    <button class="btn btn-secondary action-btn" id="admin-rename-btn">Rename User/Room</button>
+                    <button class="btn btn-danger action-btn" id="admin-delete-btn">Delete User/Room</button>
+                </div>
+                <div class="admin-action-form" id="admin-action-form">
+                    <div class="form-group">
+                        <label for="admin-action-reason">Reason for action:</label>
+                        <textarea id="admin-action-reason" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group" id="admin-action-duration-group" style="display: none;">
+                        <label for="admin-action-duration">Duration:</label>
+                        <select id="admin-action-duration" class="form-control">
+                            <option value="1">1 day</option>
+                            <option value="3">3 days</option>
+                            <option value="7">7 days</option>
+                            <option value="30">30 days</option>
+                            <option value="permanent">Permanent</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-admin-action-btn">Cancel</button>
+                <button class="btn btn-danger" id="confirm-admin-action-btn">Confirm Action</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Alert container -->
+    <div class="alerts-container" id="alerts-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
+
+<!-- #CommentComplete -->

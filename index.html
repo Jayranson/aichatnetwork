@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Network - Next Generation Chatting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <div class="home-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">AI</div>
+                    <div class="logo-text">Chat Network</div>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#rooms">Popular Rooms</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <a href="/login" class="btn btn-secondary">Login</a>
+                    <a href="/register" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Experience Next-Gen Chat with AI</h1>
+                    <p>Join the AI Chat Network and discover a new way to connect with people and intelligent AI assistants in real-time conversations.</p>
+                    <div class="hero-buttons">
+                        <a href="/register" class="btn btn-primary btn-large">Get Started</a>
+                        <a href="#features" class="btn btn-outline btn-large">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="chat-preview">
+                        <div class="chat-preview-header">
+                            <div class="preview-room-name">AI Research Lounge</div>
+                            <div class="preview-room-topic">Discussing Future of AI</div>
+                        </div>
+                        <div class="chat-preview-messages">
+                            <div class="preview-message">
+                                <div class="preview-avatar">JD</div>
+                                <div class="preview-content">
+                                    <div class="preview-author">John Doe</div>
+                                    <div class="preview-text">Has anyone seen the latest research on transformer models?</div>
+                                </div>
+                            </div>
+                            <div class="preview-message ai">
+                                <div class="preview-avatar">AI</div>
+                                <div class="preview-content">
+                                    <div class="preview-author">AI Assistant</div>
+                                    <div class="preview-text">Yes! There's been interesting work on reducing transformer model size while maintaining performance. Would you like me to share some links?</div>
+                                </div>
+                            </div>
+                            <div class="preview-message">
+                                <div class="preview-avatar">SR</div>
+                                <div class="preview-content">
+                                    <div class="preview-author">Sarah R.</div>
+                                    <div class="preview-text">I'd be interested in those links too. I'm working on a project related to efficient transformers.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-users">5,000+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-rooms">200+</div>
+                    <div class="stat-label">Chat Rooms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-messages">1M+</div>
+                    <div class="stat-label">Messages Sent</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-ai">24/7</div>
+                    <div class="stat-label">AI Assistance</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="section-container">
+                <h2 class="section-title">Powerful Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Real-time Chat</h3>
+                        <p>Communicate with others instantly in our lightning-fast chat rooms powered by WebSockets.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI Assistants</h3>
+                        <p>Get help, insights, and conversation from intelligent AI assistants in every room.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Private Messaging</h3>
+                        <p>Send private whispers to any user in the room for one-on-one conversations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏠</div>
+                        <h3>Create Rooms</h3>
+                        <p>Start your own chat rooms about any topic and invite others to join the discussion.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👑</div>
+                        <h3>Room Management</h3>
+                        <p>Moderate your rooms with powerful admin tools and customizable permissions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Access your chat rooms from any device with our responsive design.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Popular Rooms Section -->
+        <section class="popular-rooms" id="rooms">
+            <div class="section-container">
+                <h2 class="section-title">Popular Chat Rooms</h2>
+                <div class="rooms-grid" id="popular-rooms-grid">
+                    <!-- Rooms will be populated dynamically -->
+                    <div class="room-card">
+                        <div class="room-card-header">
+                            <div class="room-card-name">AI Research Lounge</div>
+                            <div class="room-card-badge">AI-Powered</div>
+                        </div>
+                        <div class="room-card-topic">Discussing Future of Artificial Intelligence</div>
+                        <div class="room-card-footer">
+                            <div>15 members</div>
+                            <div>Public</div>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-card-header">
+                            <div class="room-card-name">Tech Innovations</div>
+                            <div class="room-card-badge">AI-Powered</div>
+                        </div>
+                        <div class="room-card-topic">Exploring Cutting-Edge Technologies</div>
+                        <div class="room-card-footer">
+                            <div>12 members</div>
+                            <div>Public</div>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-card-header">
+                            <div class="room-card-name">Machine Learning Hub</div>
+                            <div class="room-card-badge">AI-Powered</div>
+                        </div>
+                        <div class="room-card-topic">Deep Dive into ML Algorithms</div>
+                        <div class="room-card-footer">
+                            <div>10 members</div>
+                            <div>Public</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rooms-cta">
+                    <a href="/login" class="btn btn-primary">Join a Room</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="section-container">
+                <h2 class="section-title">About AI Chat Network</h2>
+                <div class="about-content">
+                    <p>AI Chat Network is a modern reimagining of classic chat networks, enhanced with artificial intelligence to create more engaging and productive conversations.</p>
+                    <p>Our platform combines the best aspects of traditional chat rooms with cutting-edge AI technology, creating a unique space where users can connect with each other and with intelligent assistants.</p>
+                    <p>Whether you're looking to discuss your favorite topics, get help with complex questions, or just meet new people, AI Chat Network provides a sophisticated yet user-friendly environment for all your chatting needs.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta-container">
+                <h2>Ready to Join the Conversation?</h2>
+                <p>Create your account now and start chatting with AI and users from around the world.</p>
+                <div class="cta-buttons">
+                    <a href="/register" class="btn btn-primary btn-large">Create Account</a>
+                    <a href="/login" class="btn btn-secondary btn-large">Login</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">AI</div>
+                        <div class="logo-text">Chat Network</div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#rooms">Chat Rooms</a></li>
+                            <li><a href="#about">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Status</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Code of Conduct</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Chat Network. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                // Update auth buttons if logged in
+                const authButtons = document.querySelector('.auth-buttons');
+                authButtons.innerHTML = `
+                    <a href="/chat" class="btn btn-secondary">Enter Chat</a>
+                    <a href="/profile" class="btn btn-primary">My Profile</a>
+                `;
+                
+                // Check token validity with API
+                fetch('/api/users/me', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        // Token invalid, remove it
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        // Refresh page to show login buttons
+                        window.location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking authentication:', error);
+                });
+            }
+            
+            // Load popular rooms
+            loadPopularRooms();
+        });
+        
+        // Load popular rooms
+        function loadPopularRooms() {
+            // Check if we should use API or just show static content
+            const token = localStorage.getItem('token');
+            if (token) {
+                fetch('/api/rooms/public', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Failed to fetch rooms');
+                })
+                .then(rooms => {
+                    if (rooms.length > 0) {
+                        displayRooms(rooms.slice(0, 3)); // Show top 3 rooms
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading rooms:', error);
+                });
+            }
+        }
+        
+        // Display rooms
+        function displayRooms(rooms) {
+            const roomsGrid = document.getElementById('popular-rooms-grid');
+            roomsGrid.innerHTML = '';
+            
+            rooms.forEach(room => {
+                const roomCard = document.createElement('div');
+                roomCard.className = 'room-card';
+                roomCard.innerHTML = `
+                    <div class="room-card-header">
+                        <div class="room-card-name">${room.name}</div>
+                        <div class="room-card-badge">AI-Powered</div>
+                    </div>
+                    <div class="room-card-topic">${room.topic}</div>
+                    <div class="room-card-footer">
+                        <div>${room.totalUsers} members</div>
+                        <div>${room.isPublic ? 'Public' : 'Private'}</div>
+                    </div>
+                `;
+                
+                roomCard.addEventListener('click', () => {
+                    const token = localStorage.getItem('token');
+                    if (token) {
+                        window.location.href = `/chat?room=${room.id}`;
+                    } else {
+                        window.location.href = '/login?redirect=chat';
+                    }
+                });
+                
+                roomsGrid.appendChild(roomCard);
+            });
+        }
+        
+        // Animate stats counters
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Get actual stats from API
+                const response = await fetch('/api/stats');
+                let statsData = {};
+                
+                if (response.ok) {
+                    statsData = await response.json();
+                } else {
+                    // Use fallback values if API fails
+                    statsData = {
+                        userCount: 0,
+                        roomCount: 0,
+                        messageCount: 0
+                    };
+                }
+                
+                // Define target values from API or defaults
+                const targets = {
+                    'stat-users': statsData.userCount || 0,
+                    'stat-rooms': statsData.roomCount || 0,
+                    'stat-messages': statsData.messageCount || 0
+                };
+                
+                // Trigger animation when section is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Animate the stat counters
+                            for (const [id, target] of Object.entries(targets)) {
+                                animateCounter(id, target);
+                            }
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                
+                // Observe the stats section
+                const statsSection = document.querySelector('.stats');
+                if (statsSection) {
+                    observer.observe(statsSection);
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        });
+        
+        // Animate counter from 0 to target
+        function animateCounter(id, target) {
+            const element = document.getElementById(id);
+            if (!element) return;
+            
+            let current = 0;
+            const increment = Math.max(1, Math.floor(target / 100)); // Ensure smooth animation
+            const duration = 2000; // Animation duration in ms
+            const interval = Math.floor(duration / (target / increment));
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                // Format the number based on its magnitude
+                let formattedNumber;
+                if (target >= 1000000) {
+                    formattedNumber = (current / 1000000).toFixed(1) + 'M+';
+                } else if (target >= 1000) {
+                    formattedNumber = (current / 1000).toFixed(1) + 'k+';
+                } else {
+                    formattedNumber = current + '+';
+                }
+                
+                element.textContent = formattedNumber;
+            }, interval);
+        }
+    </script>
+</body>
+</html>
+
+<!-- #CommentComplete -->

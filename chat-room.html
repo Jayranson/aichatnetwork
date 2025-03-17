@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Rooms - AI Chat Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar with Member List -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-resizer" id="sidebar-resizer"></div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <div class="logo-text">Chat Network</div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar" id="user-avatar-sidebar">JD</div>
+                <div class="user-info">
+                    <div class="user-name" id="user-name-sidebar">John Doe</div>
+                    <div class="user-status">Online</div>
+                </div>
+                <button class="logout-btn" id="logout-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="members-list">
+                <div class="members-header">
+                    <h3>Room Members</h3>
+                    <span class="members-count" id="members-count">0</span>
+                </div>
+                
+                <div id="members-container">
+                    <!-- Members will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Rooms List Section -->
+            <div id="rooms-section" class="rooms-section">
+                <div class="rooms-header">
+                    <h2>Discover AI Chat Rooms</h2>
+                </div>
+                
+                <div class="room-grid" id="rooms-grid">
+                    <!-- Rooms will be dynamically populated here -->
+                </div>
+            </div>
+
+            <!-- Chat Window Section -->
+            <div id="chat-window" class="chat-window">
+                <div class="chat-header">
+                    <div class="chat-room-info">
+                        <div class="chat-room-name" id="current-room-name">Room Name</div>
+                        <div class="chat-room-topic" id="current-room-topic">Room Topic</div>
+                    </div>
+                    <div class="chat-header-actions">
+                        <button class="send-btn" id="room-settings-btn">Room Settings</button>
+                        <button class="send-btn" id="leave-room-btn">Leave Room</button>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be dynamically populated here -->
+                </div>
+                
+                <div class="typing-indicator" id="typing-indicator">
+                    Someone is typing<span>.</span><span>.</span><span>.</span>
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="message-input" placeholder="Type your message...">
+                    <button class="send-btn" id="send-message-btn">Send</button>
+                </div>
+            </div>
+            
+            <!-- Create Room Button (adjusted position) -->
+            <div class="create-room-btn" id="create-room-btn">+</div>
+        </div>
+
+        <!-- Create Room Modal -->
+        <div class="modal" id="create-room-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Create New Room</h3>
+                    <button class="close-modal" id="close-create-modal">&times;</button>
+                </div>
+                
+                <form id="create-room-form">
+                    <div class="form-group">
+                        <label for="room-name">Room Name</label>
+                        <input type="text" class="form-control" id="room-name" placeholder="Enter room name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="room-topic">Topic</label>
+                        <input type="text" class="form-control" id="room-topic" placeholder="What's this room about?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="room-description">Description</label>
+                        <textarea class="form-control" id="room-description" rows="3" placeholder="Describe your room"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="room-tags">Tags (comma separated)</label>
+                        <input type="text" class="form-control" id="room-tags" placeholder="e.g. Technology, AI, Learning">
+                    </div>
+                    
+                    <div class="form-group public-toggle">
+                        <label for="room-public">Public Room</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="room-public" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="send-btn" style="width: 100%;">Create Room</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Room Settings Modal -->
+        <div class="modal" id="room-settings-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Room Settings</h3>
+                    <button class="close-modal" id="close-settings-modal">&times;</button>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" id="general-tab">General</div>
+                    <div class="tab" id="permissions-tab">Permissions</div>
+                    <div class="tab" id="members-tab">Members</div>
+                    <div class="tab" id="ai-tab">AI Configuration</div>
+                </div>
+                
+                <!-- General Tab -->
+                <div class="tab-content active" id="general-content">
+                    <form id="room-settings-form">
+                        <div class="form-group">
+                            <label for="settings-room-name">Room Name</label>
+                            <input type="text" class="form-control" id="settings-room-name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="settings-room-topic">Topic</label>
+                            <input type="text" class="form-control" id="settings-room-topic">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="settings-room-description">Description</label>
+                            <textarea class="form-control" id="settings-room-description" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="settings-room-tags">Tags</label>
+                            <input type="text" class="form-control" id="settings-room-tags">
+                        </div>
+                        
+                        <div class="form-group public-toggle">
+                            <label for="settings-room-public">Public Room</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="settings-room-public">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="send-btn">Save Changes</button>
+                    </form>
+                </div>
+                
+                <!-- Permissions Tab -->
+                <div class="tab-content" id="permissions-content">
+                    <div class="form-group">
+                        <label>Member Permissions</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="perm-send-messages" checked>
+                            <label for="perm-send-messages">Can send messages</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="perm-share-files" checked>
+                            <label for="perm-share-files">Can share files</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="perm-invite-others">
+                            <label for="perm-invite-others">Can invite others</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Host Permissions</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="perm-hosts-kick" checked>
+                            <label for="perm-hosts-kick">Can kick members</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="perm-hosts-ban" checked>
+                            <label for="perm-hosts-ban">Can ban members</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="perm-hosts-promote">
+                            <label for="perm-hosts-promote">Can promote members to host</label>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="send-btn">Save Permissions</button>
+                </div>
+                
+                <!-- Members Tab -->
+                <div class="tab-content" id="members-content">
+                    <div class="form-group" id="owner-actions">
+                        <label>Owner Actions</label>
+                        <div class="form-group">
+                            <label for="transfer-ownership">Transfer Ownership</label>
+                            <select class="form-control" id="transfer-ownership">
+                                <option value="">Select a user...</option>
+                                <!-- Users will be populated here -->
+                            </select>
+                            <button type="button" class="send-btn" style="margin-top: 10px;" id="transfer-ownership-btn">Transfer</button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="promote-host">Promote to Host</label>
+                            <select class="form-control" id="promote-host">
+                                <option value="">Select a user...</option>
+                                <!-- Users will be populated here -->
+                            </select>
+                            <button type="button" class="send-btn" style="margin-top: 10px;" id="promote-host-btn">Promote</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Banned Users</label>
+                        <div id="banned-users-list" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;">
+                            <!-- Banned users will be listed here -->
+                            <div style="color: var(--text-secondary); padding: 10px;">No banned users</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Invite New Members</label>
+                        <input type="text" class="form-control" id="invite-user" placeholder="Username">
+                        <button type="button" class="send-btn" style="margin-top: 10px;">Send Invite</button>
+                    </div>
+                </div>
+                
+                <!-- AI Configuration Tab -->
+                <div class="tab-content" id="ai-content">
+                    <div class="form-group">
+                        <label>AI Assistant Behavior</label>
+                        <select class="form-control" id="ai-behavior">
+                            <option value="helpful">Helpful Guide</option>
+                            <option value="creative">Creative Collaborator</option>
+                            <option value="analytical">Analytical Thinker</option>
+                            <option value="moderator">Room Moderator</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>AI Interaction Level</label>
+                        <select class="form-control" id="ai-interaction">
+                            <option value="high">High (Proactive)</option>
+                            <option value="medium" selected>Medium (Balanced)</option>
+                            <option value="low">Low (Responsive Only)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>AI Knowledge Focus</label>
+                        <input type="text" class="form-control" id="ai-focus" placeholder="e.g. Technology, Science, Arts">
+                    </div>
+                    
+                    <div class="form-group public-toggle">
+                        <label for="ai-learning">Allow AI to Learn from Room</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="ai-learning" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <button type="button" class="send-btn">Save AI Configuration</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Context Menu -->
+        <div class="context-menu" id="user-context-menu">
+            <!-- Regular User Options -->
+            <div class="context-menu-item user-option" id="context-view-profile">
+                <span class="context-menu-icon">👤</span> View Profile
+            </div>
+            <div class="context-menu-item user-option" id="context-whisper">
+                <span class="context-menu-icon">💬</span> Whisper
+            </div>
+            <div class="context-menu-item user-option" id="context-mute">
+                <span class="context-menu-icon">🔇</span> Mute User
+            </div>
+            <div class="context-menu-item user-option" id="context-block">
+                <span class="context-menu-icon">⛔</span> Block User
+            </div>
+            
+            <!-- Host/Owner Options -->
+            <div class="context-menu-divider host-option"></div>
+            <div class="context-menu-item host-option" id="context-kick">
+                <span class="context-menu-icon">👢</span> Kick from Room
+            </div>
+            <div class="context-menu-item host-option" id="context-ban">
+                <span class="context-menu-icon">🚫</span> Ban from Room
+            </div>
+            
+            <!-- Owner Options -->
+            <div class="context-menu-item owner-option" id="context-transfer-ownership">
+                <span class="context-menu-icon">👑</span> Transfer Ownership
+            </div>
+            <div class="context-menu-item owner-option" id="context-promote-host">
+                <span class="context-menu-icon">🛡️</span> Promote to Host
+            </div>
+            
+            <!-- Admin Options -->
+            <div class="context-menu-divider admin-option"></div>
+            <div class="context-menu-item admin-option" id="context-server-ban">
+                <span class="context-menu-icon">🔨</span> Server Ban
+            </div>
+            <div class="context-menu-item admin-option" id="context-silence">
+                <span class="context-menu-icon">🤐</span> Silence User
+            </div>
+            <div class="context-menu-item admin-option" id="context-restrict">
+                <span class="context-menu-icon">🔒</span> Restrict User
+            </div>
+        </div>
+
+        <!-- Movable Whisper Window -->
+        <div class="whisper-window" id="whisper-window">
+            <div class="whisper-header" id="whisper-header">
+                <div class="whisper-title">
+                    <span style="margin-right: 8px;">💬</span>
+                    <span id="whisper-recipient">Username</span>
+                </div>
+                <button class="close-modal" id="close-whisper">&times;</button>
+            </div>
+            <div class="whisper-messages" id="whisper-messages">
+                <!-- Whisper messages will be shown here -->
+            </div>
+            <div class="whisper-input-container">
+                <input type="text" class="whisper-input" id="whisper-input" placeholder="Type a private message...">
+                <button class="whisper-send-btn" id="whisper-send-btn">Send</button>
+            </div>
+        </div>
+        
+        <!-- Connection Status Indicator -->
+        <div class="connection-status connecting" id="connection-status">
+            <span class="status-indicator"></span>
+            <span id="connection-text">Connecting...</span>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Alert container -->
+    <div class="alerts-container" id="alerts-container"></div>
+
+    <!-- Load external JavaScript files -->
+    <script src="js/common.js"></script>
+    <script src="js/chat-room.js"></script>
+</body>
+</html>
+
+<!-- #CommentComplete -->

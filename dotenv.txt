@@ -1,0 +1,13 @@
+# Server Configuration
+PORT=8001
+JWT_SECRET=your_secure_jwt_secret_here
+JWT_EXPIRATION=24h
+NODE_ENV=production
+
+# Database Configuration (for future implementation)
+# DB_CONNECTION=your_database_connection_string
+
+# WebSocket Configuration
+WS_PING_INTERVAL=30000
+
+# #CommentComplete
